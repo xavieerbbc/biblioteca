@@ -1,0 +1,51 @@
+	
+CREATE TABLE editorial (ed_codigo VARCHAR(12), 
+			ed_nombre VARCHAR(30), 
+			ed_ciudad VARCHAR(30), 
+			PRIMARY KEY(ed_codigo));
+
+
+CREATE TABLE autor (au_codigo VARCHAR(12), 
+			au_nombre VARCHAR(30), 
+			au_nacionalidad VARCHAR(30), 
+			PRIMARY KEY(au_codigo), 
+			Primary Key(au_codigo));
+
+CREATE TABLE estudiante (est_codigo VARCHAR(12), 
+			est_nombres VARCHAR(30), 
+			est_apellidos VARCHAR(30), 
+			est_carrera VARCHAR(30), 
+			est_ciclo VARCHAR(20), 
+			Primary Key(est_codigo));
+
+
+CREATE TABLE bibliotecario(bib_codigo VARCHAR(12), 
+			bib_nombres VARCHAR(30), 
+			bib_apellidos VARCHAR(30), 
+			bib_horario VARCHAR(15), 
+			Primary Key (bib_codigo));
+
+CREATE TABLE libro(li_ISBN VARCHAR(12), 
+		li_titulo VARCHAR(30), 
+		li_anio INT, 
+		ed_codigo VARCHAR(12), 
+		au_codigo VARCHAR(12), 
+		PRIMARY KEY(li_ISBN),
+		INDEX (ed_codigo),
+ 		INDEX (au_codigo),
+	   	FOREIGN KEY (ed_codigo) REFERENCES editorial(ed_codigo),
+	 	FOREIGN KEY (au_codigo) REFERENCES autor(au_codigo));
+
+CREATE TABLE prestamo(pres_codigo VARCHAR(20),
+		pres_fecha DATE,
+		est_codigo VARCHAR(12),
+		est_bib_codigo VARCHAR(12),
+		PRIMARY KEY(pres_codigo),
+		INDEX (est_codigo),
+		INDEX (bib_codigo),
+		INDEX (li_ISBN),
+		FOREIGN KEY (est_codigo) REFERENCES estudiante(est_codigo),
+		FOREIGN KEY (bib_codigo) REFERENCES bibliotecario(bib_codigo),
+		FOREIGN KEY (li_ISBN) REFERENCES libro(li_ISBN)
+);
+
