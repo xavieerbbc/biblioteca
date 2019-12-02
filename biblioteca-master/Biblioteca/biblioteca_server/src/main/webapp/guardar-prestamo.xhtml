@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+<h:form>
+		<h:outputLabel value="Codigo : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionPrestamosBean.codigo}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Fecha : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionPrestamosBean.fecha}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Estudiante : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionPrestamosBean.estudiante}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Bilbiotecario : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionPrestamosBean.bibliotecario}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		
+		
+		<h:outputLabel value="Libro : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionPrestamosBean.libro}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:commandButton value="Guardar " action="#{gestionPrestamosBean.guardarPrestamo()}">
+		</h:commandButton>
+	</h:form>
+
+
+
+
+</body> 
+</html>

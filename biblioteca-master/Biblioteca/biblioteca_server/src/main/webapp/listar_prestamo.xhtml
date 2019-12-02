@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+<h:form> 
+	<h1>Prestamos Guardados</h1>h1>
+	
+	<h:dataTable value="#{gestionPrestamosBean.prestamos}" var="prestamo">
+
+		<h:column>
+			#{prestamo.codigo}
+			<f:facet name="header">Codigo</f:facet>
+		</h:column>>
+	
+		<h:column>
+			#{prestamo.fecha}
+			<f:facet name="header">Fecha</f:facet>
+		</h:column>
+		
+		<h:column>
+			#{prestamo.estudiante}
+			<f:facet name="header">Estudiante</f:facet>
+		</h:column>
+		
+		<h:column>
+			#{prestamo.bibliotecario}
+			<f:facet name="header">Prestamo</f:facet>
+		</h:column>
+		
+			
+		<h:column>
+			#{prestamo.libro}
+			<f:facet name="header">Libro</f:facet>
+		</h:column>
+		
+		
+</h:dataTable>	
+<h:commandButton value="Regresar" action="guardar-prestamo">
+</h:commandButton>
+</h:form>
+
+
+</body> 
+</html>

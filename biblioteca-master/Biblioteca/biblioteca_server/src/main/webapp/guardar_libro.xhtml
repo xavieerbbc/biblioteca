@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form>
+		<h:outputLabel value="Codigo : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionLibrosBean.codigo}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Titulo : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionLibrosBean.titulo}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Autor : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionLibrosBean.autor}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Categoria : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionLibrosBean.categoria}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:outputLabel value="Editorial : ">
+		</h:outputLabel>
+		
+		<h:inputText value="#{gestionLibrosBean.editorial}">
+		</h:inputText>
+		<br></br>
+		<br></br>
+		
+		<h:commandButton value="Guardar " action="#{gestionLibrosBean.guardarLibro()}">
+		</h:commandButton>
+	</h:form>
+
+</body> 
+</html>
+
