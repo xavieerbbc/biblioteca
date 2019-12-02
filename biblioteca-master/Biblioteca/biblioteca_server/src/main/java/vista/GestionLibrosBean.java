@@ -1,25 +1,16 @@
 package vista;
 
-
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import negocio.GestionLibrosLocal;
 import modelo.Libro;
+
 @ManagedBean
-
-/**
- *  
- *  @RequestScope
- *
- */
-
 public class GestionLibrosBean {
 	
 	@Inject
 	private GestionLibrosLocal gl;
-	
 	
 	/*Beans properties*/
 	private String codigo;
@@ -30,7 +21,6 @@ public class GestionLibrosBean {
 	
 	private List<Libro> libros;
 	
-	
 	public String guardarLibro() {
 		
 		System.out.println(codigo +"  "+ "  " +titulo+ "  " +autor+ "  " +categoria+ "  " +editorial) ;
@@ -40,7 +30,6 @@ public class GestionLibrosBean {
 		
 		return "listar_libros";
 	}
-
 
 	public GestionLibrosLocal getGl() {
 		return gl;
