@@ -1,10 +1,8 @@
 package vista;
 
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-
 import modelo.Libro;
 import modelo.Prestamo;
 import negocio.GestionPrestamoLocal;
@@ -14,13 +12,11 @@ public class GestionPrestamosBean {
 
 	@Inject
 	private GestionPrestamoLocal gl;
-
 	private String codigo;
 	private String fecha;
 	private String estudiante;
 	private String bibliotecario;
 	private String libro;
-
 	private List<Prestamo> prestamos;
 
 	public String guardarPrestamo() {
@@ -88,7 +84,4 @@ public class GestionPrestamosBean {
 	public void setPrestamos(List<Prestamo> prestamos) {
 		this.prestamos = prestamos;
 	}
-	
-	
-
 }
