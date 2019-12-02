@@ -19,7 +19,7 @@ public class Conectar {
     private static final String driver="com.mysql.jdbc.Driver";
     private static final String user="root";
     private static final String passvord="";
-    private static final String url="jdbc:mysql://localhost:3306/tienda";
+    private static final String url="jdbc:mysql://localhost:3306/biblioteca";
     
     // Funcion que va conectarse a mi bd de mysql
     public Conectar() {
@@ -28,7 +28,7 @@ public class Conectar {
         try{
             Class.forName(driver);
             // Nos conectamos a la bd
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tienda", "root", "");
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/biblioteca", "root", "");
             // Si la conexion fue exitosa mostramos un mensaje de conexion exitosa
             if (conn!=null){
                 System.out.println("Conexion establecida");

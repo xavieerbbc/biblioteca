@@ -6,6 +6,7 @@
 package Interfaces;
 
 import BD.Consultas;
+import Controlador.EventoVentanaAutor;
 import Controlador.EventoVentanaPrincipal;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +45,31 @@ public class VtnPrincipal extends JFrame{
         this.menuList.add(new JMenu("Tabla Libros"));
         
         this.menuItemList=new ArrayList<JMenuItem>();
-        this.menuItemList.add(new JMenuItem("Libros"));
+        this.menuItemList.add(new JMenuItem("Autor"));
+        this.menuItemList.add(new JMenuItem("Bibliotecario"));
+        this.menuItemList.add(new JMenuItem("Editorial"));
+        this.menuItemList.add(new JMenuItem("Estudiante"));
+        this.menuItemList.add(new JMenuItem("Libro"));
+        this.menuItemList.add(new JMenuItem("Prestamo"));
         
         this.setContentPane(this.escritorio);
         this.setJMenuBar(barramenu);
         this.barramenu.add(menuList.get(0));
         
+        
         this.menuList.get(0).add(this.menuItemList.get(0));
+        this.menuList.get(0).add(this.menuItemList.get(1));
+        this.menuList.get(0).add(this.menuItemList.get(2));
+        this.menuList.get(0).add(this.menuItemList.get(3));
+        this.menuList.get(0).add(this.menuItemList.get(4));
+        this.menuList.get(0).add(this.menuItemList.get(5));
         
         this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(2).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(3).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(4).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(5).addActionListener(new EventoVentanaPrincipal(this));
     }
 
     public JDesktopPane getEscritorio() {

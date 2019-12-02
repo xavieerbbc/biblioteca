@@ -6,6 +6,7 @@
 package Interfaces;
 
 import BD.Consultas;
+import Controlador.EventoVentanaAutor;
 import Controlador.EventoVentanaLibros;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -29,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Javier
  */
-public class VtnIngesarLibros extends JInternalFrame{
+public class VtnIngresarAutor extends JInternalFrame{
     
     private List<JLabel> etiList;
     private List<JTextField> txtList;
@@ -40,8 +41,8 @@ public class VtnIngesarLibros extends JInternalFrame{
     private JScrollPane scroll;
     private Consultas cons;
 
-    public VtnIngesarLibros(Consultas cons) {
-        super("Libros", true, true, true, true);
+    public VtnIngresarAutor(Consultas cons) {
+        super("Autores", true, true, true, true);
         this.cons = cons;
         this.iniciaComponentes();
         this.setSize(600, 450);
@@ -49,18 +50,16 @@ public class VtnIngesarLibros extends JInternalFrame{
 
     public void iniciaComponentes() {
         this.etiList = new ArrayList<JLabel>();
-        this.etiList.add(new JLabel("li_ISBN:"));
-        this.etiList.add(new JLabel("li_titulo:"));
-        this.etiList.add(new JLabel("li_anio:"));
-        this.etiList.add(new JLabel("ed_codigo"));
-        this.etiList.add(new JLabel("au_codigo"));
+        this.etiList.add(new JLabel("au_codigo:"));
+        this.etiList.add(new JLabel("au_nombre:"));
+        this.etiList.add(new JLabel("au_nacionalidad:"));
+        
 
         this.txtList = new ArrayList<JTextField>();
         this.txtList.add(new JTextField());
         this.txtList.add(new JTextField());
         this.txtList.add(new JTextField());
-        this.txtList.add(new JTextField());
-        this.txtList.add(new JTextField());
+        
 
         this.botonList = new ArrayList<JButton>();
         this.botonList.add(new JButton("Insertar"));
@@ -73,25 +72,27 @@ public class VtnIngesarLibros extends JInternalFrame{
         LayoutManager disenioSup = new GridLayout(7, 2);
         JPanel panelSup = new JPanel(disenioSup);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             panelSup.add(this.etiList.get(i));
             panelSup.add(this.txtList.get(i));
         }
         panelSup.add(this.botonList.get(0));
         panelSup.add(this.botonList.get(1));
-         panelSup.add(this.botonList.get(2));
-          panelSup.add(this.botonList.get(3));
+        panelSup.add(this.botonList.get(2));
+        panelSup.add(this.botonList.get(3));
+        
 
-        this.botonList.get(0).addActionListener((ActionListener) new EventoVentanaLibros(this));
-        this.botonList.get(1).addActionListener((ActionListener) new EventoVentanaLibros(this));
-        this.botonList.get(2).addActionListener((ActionListener) new EventoVentanaLibros(this));
-        this.botonList.get(3).addActionListener((ActionListener) new EventoVentanaLibros(this));
+        this.botonList.get(0).addActionListener((ActionListener) new EventoVentanaAutor(this));
+        this.botonList.get(1).addActionListener((ActionListener) new EventoVentanaAutor(this));
+        this.botonList.get(2).addActionListener((ActionListener) new EventoVentanaAutor(this));
+        this.botonList.get(3).addActionListener((ActionListener) new EventoVentanaAutor(this));
+        
 
 
         this.panelPrincipal.add(panelSup, BorderLayout.NORTH);
 
         this.modeloTabla = new DefaultTableModel();
-        this.modeloTabla.setColumnIdentifiers(new Object[]{"li_ISBN", "li_titulo", "li_anio", "ed_codigo","au_codigo"});
+        this.modeloTabla.setColumnIdentifiers(new Object[]{"au_codigo", "au_nombre", "au_nacionalidad"});
 
         this.tabla = new JTable(this.cargarTabla());
         this.scroll = new JScrollPane(this.tabla);
@@ -107,10 +108,10 @@ public class VtnIngesarLibros extends JInternalFrame{
             this.modeloTabla.removeRow(i);
         }
 
-        ResultSet resultado = this.cons.ConsultarLibros();
+        ResultSet resultado = this.cons.ConsultarAutor();
         try {
             while (resultado.next()) {
-                this.modeloTabla.addRow(new Object[]{resultado.getString("li_ISBN"), resultado.getString("li_titulo"), resultado.getString("li_anio"), resultado.getString("ed_codigo"),resultado.getString("au_codigo")});
+                this.modeloTabla.addRow(new Object[]{resultado.getString("au_codigo"), resultado.getString("au_nombre"), resultado.getString("au_nacionalidad")});
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -186,5 +187,5 @@ public class VtnIngesarLibros extends JInternalFrame{
         this.accessibleContext = accessibleContext;
 
     }
-
+    
 }
