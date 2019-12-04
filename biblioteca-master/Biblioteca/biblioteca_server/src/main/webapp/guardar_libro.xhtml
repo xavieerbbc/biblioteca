@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -7,48 +7,54 @@
 <h:head></h:head> 
 <body> 
 	<h:form>
-		<h:outputLabel value="Codigo : ">
+<h:panelGrid columns="3">
+
+		<h:outputLabel value="Codigo Libro">
 		</h:outputLabel>
 		
-		<h:inputText value="#{gestionLibrosBean.codigo}">
+		<h:inputText value="#{gestionLibrosBean.libro.codigo}">
 		</h:inputText>
 		<br></br>
-		<br></br>
 		
-		<h:outputLabel value="Titulo : ">
+		<h:outputLabel value="Titulo">
 		</h:outputLabel>
 		
-		<h:inputText value="#{gestionLibrosBean.titulo}">
+		<h:inputText value="#{gestionLibrosBean.libro.titulo}">
 		</h:inputText>
 		<br></br>
-		<br></br>
 		
-		<h:outputLabel value="Autor : ">
+		<h:outputLabel value="Editorial">
 		</h:outputLabel>
 		
-		<h:inputText value="#{gestionLibrosBean.autor}">
+		<h:inputText value="#{gestionLibrosBean.libro.editorial}">
 		</h:inputText>
 		<br></br>
-		<br></br>
 		
-		<h:outputLabel value="Categoria : ">
-		</h:outputLabel>
+		<h:outputLabel value="Autor:" />
+		<h:dataTable value="#{gestionLibrosBean.libro.autores}" var="autores">
+			<h:column>
+				<f:facet name="header">Código</f:facet>
+				<h:inputText value="#{autores.codigo}" />
+			</h:column>
 		
-		<h:inputText value="#{gestionLibrosBean.categoria}">
-		</h:inputText>
-		<br></br>
-		<br></br>
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				<h:inputText value="#{autores.nombre}" />
+			</h:column>
 		
-		<h:outputLabel value="Editorial : ">
-		</h:outputLabel>
+		</h:dataTable>
+		<h:commandButton action="#{gestionLibrosBean.addAutor()}" value="+ Autor" />
 		
-		<h:inputText value="#{gestionLibrosBean.editorial}">
-		</h:inputText>
-		<br></br>
-		<br></br>
 		
-		<h:commandButton value="Guardar " action="#{gestionLibrosBean.guardarLibro()}">
+		
+		
+		<h:commandButton value="Guardar" action="#{gestionLibrosBean.guardar()}">
 		</h:commandButton>
+
+		<h:commandButton value="Mostrar Autores" action="#{gestionLibrosBean.mostrarAutores()}">
+		</h:commandButton>
+		
+	</h:panelGrid>
 	</h:form>
 
 </body> 

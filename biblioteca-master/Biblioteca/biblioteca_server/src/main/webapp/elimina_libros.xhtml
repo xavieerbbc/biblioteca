@@ -7,14 +7,13 @@
 <h:head></h:head> 
 <body> 
 
-<h1> Eliminar Libros </h1>
+<h1>Eliminar Libross</h1>
 
-	
+
 <h:form>
 
-	
 Filtro de búsqueda : <h:inputText value="#{eliminaLibrosBean.filtro}"/>
-<h:commandButton action="#{eliminaLibrosBean.eliminar()}" value="Eliminar"/>
+<h:commandButton action="#{eliminaLibrosBean.eliminaLibro()}" value="Eliminar"/>
 
 <h:dataTable value="#{gestionLibrosBean.libros}" var="libro">
 
@@ -29,15 +28,9 @@ Filtro de búsqueda : <h:inputText value="#{eliminaLibrosBean.filtro}"/>
 		</h:column>
 		
 		<h:column>
-			#{libro.anio}
-			<f:facet name="header">Anio</f:facet>
-		</h:column>
-		
-		<h:column>
-			#{libro.autor}
+			#{libro.autores}
 			<f:facet name="header">Autor</f:facet>
 		</h:column>
-		
 		
 		<h:column>
 			#{libro.editorial}
@@ -51,8 +44,7 @@ Filtro de búsqueda : <h:inputText value="#{eliminaLibrosBean.filtro}"/>
 <h:commandButton value="Regresar" action="guardar-libro">
 </h:commandButton>
 
-	</h:form>
-	
+</h:form>
 
 </body> 
 </html>
