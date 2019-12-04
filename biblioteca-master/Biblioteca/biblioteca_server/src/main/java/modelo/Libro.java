@@ -54,6 +54,10 @@ public class Libro implements Serializable{
 		return "Libro [codigo=" + codigo + ", titulo=" + titulo + ", anio=" + anio + ", autor=" + autor + ", editorial="
 				+ editorial + "]";
 	}
+
+    public void addAutor(Autor autor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 	
 	

@@ -1,107 +1,81 @@
 package vista;
 
+
 import java.util.List;
+import javax.faces.bean.SessionScoped;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-import negocio.GestionLibrosLocal;
+
+import negocio.GestionDatos;
+import modelo.Autor;
+import modelo.Bibliotecario;
 import modelo.Libro;
 
 @ManagedBean
+@SessionScoped
 public class GestionLibrosBean {
 	
 	@Inject
-	private GestionLibrosLocal gl;
-	
-	/*Beans properties*/
-	private String codigo;
-	private String titulo;
-	private String autor;
-	private String categoria;
-	private String editorial;
-	
+	private GestionDatos gd;
+	private Libro libro = new Libro();
 	private List<Libro> libros;
+	private List<Autor> autores;
 	
-	public String guardarLibro() {
+	@PostConstruct
+	public void init()
+	{
+		libro = new Libro();
+		libro.addAutor(new Autor());
+		libros=gd.getLibros();
 		
-		System.out.println(codigo +"  "+ "  " +titulo+ "  " +autor+ "  " +categoria+ "  " +editorial) ;
-		gl.guardarLibro(codigo, titulo,autor,categoria,editorial); 
-		
-		libros = gl.getLibros();
-		
-		return "listar_libros";
-	}
-
-	public GestionLibrosLocal getGl() {
-		return gl;
 	}
 
 
-	public void setGl(GestionLibrosLocal gl) {
-		this.gl = gl;
+	public Libro getLibro() {
+		return libro;
 	}
 
-
-
-	public String getCodigo() {
-		return codigo;
+	public void setLibro(Libro libro) {
+		this.libro = libro;
 	}
-
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-
-	public String getAutor() {
-		return autor;
-	}
-
-
-	public void setAutor(String autor) {
-		this.autor = autor;
-	}
-
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
-
-	public String getEditorial() {
-		return editorial;
-	}
-
-
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
-	}
-
 
 	public List<Libro> getLibros() {
 		return libros;
 	}
 
-
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
 	}
-
 	
-
 	
+	public GestionDatos getGd() {
+		return gd;
+	}
+
+	public void setGd(GestionDatos gd) {
+		this.gd = gd;
+	}
+
+	public String guardar()
+	{
+		System.out.print(libro);
+		gd.guardarLibro(libro);
+		init();
+		libros = gd.getLibros();
+		return "listar_libros";	
+	}
+	
+	public String mostrarAutores()
+	{
+		
+		return "listar_autores";	
+	}
+
+
+	public String addAutor()
+	{
+		libro.addAutor(new Autor());
+		return null;
+	}
 }
